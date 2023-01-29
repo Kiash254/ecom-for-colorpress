@@ -3,6 +3,48 @@
 {% block title %} Store {% endblock %}
 {%  load static %}
 {% block content %}
+    <div class="row">
+        <div class="col-ls-12">
+            <div class="box-element">
+                <br>
+                <br>
+                <a class="btn btn-outline-dark" href="{% url 'store:store' %}">&#x2190;  Continue Shopping</a>
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Items: <strong>3</strong></h5></th>
+                        <th><h5>Total: <strong>60</strong></h5></th>
+                        <th>
+                            <a class="btn btn-success" style="float:right;margin:5px;" href="{% url 'store:checkout' %}">CheckOut</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="box-element">
+                <div class="cart-row" style="display:flex;align-items:flex-stretch;padding-bottom: 10px;margin-bottom:10px;border-bottom:1px solid #ececec;">
+                     <div style="flex: 2;" ></div>
+                     <div style="flex: 2;" ><strong>Item</strong></div>
+                     <div style="flex: 1;" ><strong>Price</strong></div>
+                     <div style="flex: 1;" ><strong>Quantity</strong></div>
+                     <div style="flex: 1;" ><strong>Total</strong></div>
+                </div>
+                <div class="cart-row" style="display:flex;align-items:flex-stretch;padding-bottom: 10px;margin-bottom:10px;border-bottom:1px solid #ececec;">
+                    <div style="flex: 2;" ><img style="width:100px ;" src="{% static 'images/1.png' %}" alt=""></div>
+                    <div style="flex: 2;" > Producct 1</div>
+                    <div style="flex: 1;" >$20</div>
+                    <div style="flex: 1;" >
+                        <p class="quantity" style="display:inline-block;font-weight:700;pading-right:10px;"> 2</p>
+                        <div style="display: inline-block;font-weight:700;padding-right:10px;">
+                            <img style="width:12px;cursor:pointer;display:block" src="{% static 'images/arrow.png' %}" alt="">
+                            <img style="width:12px;cursor:pointer;display:block" src="{% static 'images/down.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div style="flex: 1;" >$40</div>
+               </div>
+            </div>
+        </div>
+    </div>
 
-<h2>Store</h2>
 {%  endblock %}
