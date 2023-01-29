@@ -4,7 +4,7 @@ from django.urls import path
 from .views import Store, Cart, Checkout
 
 
-app_name='Store'
+app_name='store'
 
 urlpatterns=[
     path('',Store,name='store'),
