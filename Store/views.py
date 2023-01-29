@@ -11,7 +11,7 @@ def Store(request):
 
 def Cart(request):
     context = {}
-    return render(request,'Cart.html')
+    return render(request,'cart.html')
 
 def Checkout(request):
     context = {}
