@@ -4,8 +4,9 @@ from django.db import models
 #importing the user model
 from django.contrib.auth.models import User 
 #import imagekit
-from imagekit.models import ProcessedImageField
+from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from imagekit.models import ProcessedImageField
 
 
 class Customer(models.Model):
@@ -20,11 +21,12 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=False)
-    image=ProcessedImageField(
-        upload_to='images/',
-        processors=[ResizeToFill(300, 300)],
-        format='JPEG',
-        options={'quality': 60}
+    image=models.ImageField(upload_to='images/',null=True,blank=True)
+    image_thumbnail = ImageSpecField(source='image',
+                                        processors=[ResizeToFill(100, 50)],
+                                        format='JPEG',
+                                        options={'quality': 60}
+                                            
     )
     def __str__(self):
         return self.name
