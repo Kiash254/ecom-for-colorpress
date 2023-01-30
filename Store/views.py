@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 # Create your views here.
 
@@ -41,3 +41,13 @@ def Checkout(request):
             'order':order,
         }
     return render(request,'checkout.html',context)
+
+
+def UpdateItem(request,pk):
+    product = Product.objects.get(id=pk)
+    order,created = Order.objects.get_or_create(customer=request.user.customer,complete=False)
+    orderItem,created = OrderItem.objects.get_or_create(order=order,product=product)
+    orderItem.save()
+    return redirect('store')
+    
+    
