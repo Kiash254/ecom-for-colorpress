@@ -73,25 +73,15 @@
 
 <script  type="text/javascript">
     var shipping='{{order.shipping}}'
-    var total='{{order.get_cart_total}}'
-    var items='{{order.get_cart_items}}'
-    var csrf='{{csrf_token}}'
-    var url='{{url}}'
-    var order_id='{{order.id}}'
-    var user_id='{{user.id}}'
-    var user_name='{{user.username}}'
-    var user_email='{{user.email}}'
-    var user_address='{{user.address}}'
-    var user_city='{{user.city}}'
-    var user_state='{{user.state}}'
-    var user_zipcode='{{user.zipcode}}'
-    var user_country='{{user.country}}'
-    var user_phone='{{user.phone}}'
-    var user_image='{{user.image}}'
-    var user_date_joined='{{user.date_joined}}'
-    var user_last_login='{{user.last_login}}'
-    var user_is_active='{{user.is_active}}'
-    var user_is_staff='{{user.is_staff}}'
-    
+    if(shipping== 'False'){
+        document.getElementById('shipping-info').innerHTML = '';
+    }
+    var form = document.getElementById('form');
+    form.addEventListener('submit',function(e){
+        e.preventDefault();
+        console.log('submitted');
+        document.getElementById('form-button').classList.add('hidden');
+        document.getElementById('payment-info').classList.remove('hidden');
+    })
 </script>
 {%  endblock %}
