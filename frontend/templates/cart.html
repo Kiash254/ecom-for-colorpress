@@ -13,8 +13,8 @@
                 <br>
                 <table class="table">
                     <tr>
-                        <th><h5>Items: <strong>3</strong></h5></th>
-                        <th><h5>Total: <strong>60</strong></h5></th>
+                        <th><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
+                        <th><h5>Total: <strong>$ {{order.get_cart_total}}</strong></h5></th>
                         <th>
                             <a class="btn btn-success" style="float:right;margin:5px;" href="{% url 'store:checkout' %}">CheckOut</a>
                         </th>
@@ -30,19 +30,21 @@
                      <div style="flex: 1;" ><strong>Quantity</strong></div>
                      <div style="flex: 1;" ><strong>Total</strong></div>
                 </div>
+                {%  for item in items %}
                 <div class="cart-row" style="display:flex;align-items:flex-stretch;padding-bottom: 10px;margin-bottom:10px;border-bottom:1px solid #ececec;">
-                    <div style="flex: 2;" ><img style="width:100px ;" src="{% static 'images/1.png' %}" alt=""></div>
-                    <div style="flex: 2;" > Producct 1</div>
-                    <div style="flex: 1;" >$20</div>
+                    <div style="flex: 2;" ><img style="width:100px ;" src="{{item.product.imageURL}}" alt=""></div>
+                    <div style="flex: 2;" > {{item.product.name}}</div>
+                    <div style="flex: 1;" >$ {{item.product.price | floatformat:2}}</div>
                     <div style="flex: 1;" >
-                        <p class="quantity" style="display:inline-block;font-weight:700;pading-right:10px;"> 2</p>
+                        <p class="quantity" style="display:inline-block;font-weight:700;pading-right:10px;">{{item.quantity}}</p>
                         <div style="display: inline-block;font-weight:700;padding-right:10px;">
                             <img style="width:12px;cursor:pointer;display:block;margin-top:5px;transition:.1s;" src="{% static 'images/arrow.png' %}" alt="">
                             <img style="width:12px;cursor:pointer;display:block;margin-top:5px;transition:.1s;" src="{% static 'images/down.png' %}" alt="">
                         </div>
                     </div>
-                    <div style="flex: 1;" >$40</div>
+                    <div style="flex: 1;" >${{item.get_total}}</div>
                </div>
+                {%  endfor %}
             </div>
         </div>
     </div>
